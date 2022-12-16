@@ -7,6 +7,10 @@ using namespace std;
 
 void mod(const vector<bool> &base) {
     size_t n = base.size(), i, num;
+    // default(none) - делают приватную зону видимости переменных
+    // shared() - говорит какие переменные общие для всех потоков
+    // private() - говорит кккие переменных приватные для каждого потока
+    // schedule() - задает рамзер окна в котором будет искать 1 группа
 #pragma omp parallel for default(none) shared(base, n) private(i) schedule(dynamic)
     for (i = 0; i < n; ++i) {
         if (base[i]) {
